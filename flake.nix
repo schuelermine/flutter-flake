@@ -41,6 +41,7 @@
               pcre
               epoxy
               glib
+              xorg.libX11
             ]);
 
           flutter-fhs = pkgs.buildFHSUserEnv {
