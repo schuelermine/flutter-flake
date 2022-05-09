@@ -22,14 +22,15 @@
       }, system, nixpkgsConfig ? { }, enable-android ? false
         , enable-linuxDesktop ? false, enable-web ? true
         , enable-windowsDesktop ? false, enable-macDesktop ? false
-        , enable-ios ? false
+        , enable-ios ? false, extra-deps ? [ ], androidConfig ? { }
         , chromeExecutable ? pkgs.ungoogled-chromium + "/bin/chromium" }:
 
         let
           androidComposition = pkgs.androidenv.composeAndroidPackages {
             platformToolsVersion = "31.0.3";
             toolsVersion = "26.1.1";
-          };
+            includeEmulator = true;
+          } // androidConfig;
 
           flutter-deps = optional enable-android androidComposition.androidsdk
             ++ optList enable-linuxDesktop (with pkgs; [
