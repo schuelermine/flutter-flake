@@ -56,6 +56,7 @@
               flutter config --android-sdk ${androidComposition.androidsdk}/libexec/android-sdk
             '' + optStr enable-linuxDesktop ''
               flutter config --enable-linux-desktop
+            '' + optStr enable-web ''
               export CHROME_EXECUTABLE=${chromeExecutable}
             '';
           };
