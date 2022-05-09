@@ -46,11 +46,17 @@
             iOS, macOS and Windows are not supported currently. Feel free to contribute.
           ''
         else
+          assert !enable-ios;
+          assert !enable-macDesktop;
+          assert !enable-windowsDesktop;
           pkgs.mkShell {
             packages = with pkgs; [ flutter-fhs ] ++ flutter-deps;
-            ${guard enable-web "CHROME_EXECUTABLE"} = chromeExecutable;
             shellHook = optStr enable-android ''
+              flutter config --enable-android
               flutter config --android-sdk ${androidComposition.androidsdk}/libexec/android-sdk
+            '' + optStr enable-linuxDesktop ''
+              flutter config --enable-linux-desktop
+              export CHROME_EXECUTABLE=${chromeExecutable}
             '';
           };
     };
