@@ -33,7 +33,7 @@
 
           flutter-deps = optional enable-android androidComposition.androidsdk
             ++ optList enable-linuxDesktop
-            (with pkgs; [ clang cmake ninja pkg-config gtk3.dev ]);
+            (with pkgs; [ clang cmake ninja pkg-config gtk3.dev pcre ]);
 
           flutter-fhs = pkgs.buildFHSUserEnv {
             name = "flutter";
