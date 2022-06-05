@@ -1,6 +1,6 @@
 {
   inputs = {
-    flutter-flake.url = "github:schuelermine/flutter-flake/b0";
+    flutter-flake.url = "github:alukardbf/flutter-flake/master";
     flake-utils.url = "github:numtide/flake-utils/master";
   };
   outputs = { self, nixpkgs, flutter-flake, flake-utils }:

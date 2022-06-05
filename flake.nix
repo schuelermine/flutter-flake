@@ -20,7 +20,7 @@
         inherit system;
         config = nixpkgsConfig;
       }, system, nixpkgsConfig ? { }, enable-android ? false
-        , enable-linuxDesktop ? false, enable-web ? true
+        , enable-linuxDesktop ? false, enable-web ? false
         , enable-windowsDesktop ? false, enable-macDesktop ? false
         , enable-ios ? false, extra-deps ? [ ], androidConfig ? { }
         , chromeExecutable ? pkgs.ungoogled-chromium + "/bin/chromium" }:
