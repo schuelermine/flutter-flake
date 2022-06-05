@@ -38,11 +38,18 @@
               cmake
               ninja
               pkg-config
-              gtk3.dev
-              pcre
+              # libs:
+              atk
+              cairo
               epoxy
+              gdk-pixbuf
               glib
-              xorg.libX11
+              gtk3
+              harfbuzz
+              pango
+              pcre
+              xorg.libX11.dev
+              xorg.xorgproto
             ]);
 
           flutter-fhs = pkgs.buildFHSUserEnv {
@@ -69,6 +76,8 @@
             '' + optStr enable-web ''
               export CHROME_EXECUTABLE=${chromeExecutable}
             '';
+            CPATH = optStr enable-linuxDesktop "${pkgs.xorg.libX11.dev}/include:${pkgs.xorg.xorgproto}/include:${pkgs.epoxy}/lib";
+            LD_LIBRARY_PATH = with pkgs; lib.optionals enable-linuxDesktop pkgs.lib.makeLibraryPath [ epoxy gtk3 pango harfbuzz atk cairo gdk-pixbuf glib ];
           };
     };
   };
